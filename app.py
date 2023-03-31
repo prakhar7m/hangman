@@ -1,6 +1,5 @@
 from flask import Flask,render_template,redirect,request
-import hangman
-import functionsSS
+import functions
 import re
   
 app = Flask(__name__) 
