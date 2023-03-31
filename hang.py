@@ -1,5 +1,4 @@
 from flask import Flask,render_template,redirect,request, session
-import hangman
 import functions
 import re
 import string
@@ -14,3 +13,12 @@ def set_response_headers(response):
     response.headers['Expires'] = '0'
     return response
   
+@app.route('/game')
+def game():
+    warnings_counter = 3
+    letter = request.form["letter"]
+    if not re.match("^[a-zA-Z*]*$", letter):
+        warnings_counter -=1
+    
+    
+    
