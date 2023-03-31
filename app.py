@@ -1,7 +1,6 @@
 from flask import Flask,render_template,redirect,request
 import hangman
-import functions
-from flask import Markup
+import functionsSS
 import re
   
 app = Flask(__name__) 
@@ -33,13 +32,11 @@ def game():
 	global tries
 	global blanks
 	global message
-	global warnings_counter
-	global display_warning
- 
-	warnings_counter = 3
+
 	message = ""
-	word_list = hangman.load_words()
-	secret_word = hangman.choose_word(word_list)
+	# word_list = hangman.load_words()
+	# secret_word = hangman.choose_word(word_list)
+	secret_word="apple"
 	word_set = "abcdefghijklmnopqrstuvwxyz"
 	blanks = 0
 	to_display = []
@@ -63,16 +60,12 @@ def add_char():
 	global tries
 	global message
 	global blanks
-	global display_warning
-	global warnings_counter
+
  
 	message = ""
 	letter = request.form["letter"]
 	
-	if not re.match("^[a-zA-Z*]*$", letter):
-		warnings_counter -=1
-		display_warning = f"you have {warnings_counter} warnings left"
-  
+
 	chance_lost = True
  
 	for i,char in enumerate(secret_word):

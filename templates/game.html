@@ -20,12 +20,9 @@
       </div>
       <p><button type="submit">Submit</button></p>
     </form>
+
     <div>
-      {% if display_message %}
-      <span>{{display_message}}</span>
-    </div>
-    <div>
-      {% elif message %}
+      {% if message %}
       <span>{{message}}</span>
       {% endif %}
     </div>
